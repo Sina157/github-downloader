@@ -1,24 +1,27 @@
-name: Download and Commit File
-
-on:
-  workflow_dispatch:
+name: test 
+ 
+on: 
+  push:
+    branches:
+      - main
 
 jobs:
-  download:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Download 
+      run: wget -O index.rar https://github.com/Sina157/test/blob/main/index.rar?raw=true
+      
+    - name: install 
+      run: sudo apt-get install unrar
 
-      - name: Download file with wget
-        run: |
-          wget -O get-cookies.txt-locally_v0.7.2_chrome.zip \
-          "https://github.com/kairi003/Get-cookies.txt-LOCALLY/releases/download/v0.7.2/get-cookies.txt-locally_v0.7.2_chrome.zip"
+    - name: Extract 
+      run: unrar x index.rar
 
-      - name: Commit and push
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add get-cookies.txt-locally_v0.7.2_chrome.zip
-          git diff --staged --quiet || git commit -m "Add downloaded zip file"
-          git push
+    - name: permission 
+      run: chmod +x /home/runner/work/test/test/index.x86_64
+
+    - name: Show current directory
+      run: bash index.sh --server
+    
