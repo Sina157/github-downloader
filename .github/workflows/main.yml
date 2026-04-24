@@ -14,12 +14,10 @@ jobs:
     - name: setup 
       uses: actions/checkout@v4
 
-    - name: sleep
-      run: sleep 5
     - name: Download file with wget
       run: |
           wget -O get-cookies.txt-locally_v0.7.2_chrome.zip \
-          "https://github.com/kairi003/Get-cookies.txt-LOCALLY/releases/download/v0.7.2/get-cookies.txt-locally_v0.7.2_chrome.zip"
+          "https://github.com/moonD4rk/HackBrowserData/releases/download/v0.4.6/hack-browser-data-linux-64bit.zip"
 
 
     - name: Commit and push
