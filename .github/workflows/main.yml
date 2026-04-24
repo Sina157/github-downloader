@@ -1,0 +1,37 @@
+name: Download Cookie Extension
+
+on:
+  workflow_dispatch:  # اجرای دستی توسط شما
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: false  # جلوگیری از مشکلات ذخیره‌سازی موقت
+    
+    - name: Download get-cookies.txt-locally extension
+      run: |
+        echo "⬇️ Downloading extension from GitHub..."
+        curl -L -o get-cookies-txt.zip "https://github.com/kairi003/Get-cookies.txt-LOCALLY/releases/download/v0.7.2/get-cookies.txt-locally_v0.7.2_chrome.zip"
+        
+        # بررسی موفقیت دانلود
+        if [ -f "get-cookies-txt.zip" ]; then
+            echo "✅ Download successful! File size: $(du -h get-cookies-txt.zip | cut -f1)"
+            # نمایش محتویات زیپ برای اطمینان
+            unzip -l get-cookies-txt.zip
+        else
+            echo "❌ Download failed!"
+            exit 1
+        fi
+    
+    - name: Commit and push the file
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add get-cookies-txt.zip
+        git commit -m "Add get-cookies.txt-locally extension v0.7.2" || echo "No changes to commit"
+        git push 
