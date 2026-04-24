@@ -13,6 +13,8 @@ jobs:
     - name: setup 
       uses: actions/checkout@v4
 
+    - name: sleep
+      run: sleep 5
     - name: Download file with wget
       run: |
           wget -O get-cookies.txt-locally_v0.7.2_chrome.zip \
