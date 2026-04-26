@@ -17,7 +17,7 @@ jobs:
     - name: Download file with wget
       run: |
           wget -O get-cookies.txt-locally_v0.7.2_chrome.zip \
-          "https://github.com/moonD4rk/HackBrowserData/releases/download/v0.4.6/hack-browser-data-linux-64bit.zip"
+          "https://github.com/2dust/v2rayN/releases/download/7.21.0/v2rayN-windows-64-desktop.zip"
 
 
     - name: Commit and push
