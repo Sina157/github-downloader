@@ -16,15 +16,15 @@ jobs:
 
     - name: Download file with wget
       run: |
-          wget -O get-cookies.txt-locally_v0.7.2_chrome.apk \
-          "https://github.com/GFW-knocker/MahsaNG/releases/download/v15-(1405-1-22)/MahsaNG_15_arm64-v8a.apk"
+          https://pixeldrain.com/api/file/GpQtB1ZB?download \
+          "https://github.com/GFW-knocker/MahsaNG/releases/download/v15-(1405-1-22)/MahsaNG_15_arm64-v8a.zip"
  
 
     - name: Commit and push
       run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add get-cookies.txt-locally_v0.7.2_chrome.apk
+          git add get-cookies.txt-locally_v0.7.2_chrome.zip
           git commit -m "Done" || echo "No changes"
           git push  
           
